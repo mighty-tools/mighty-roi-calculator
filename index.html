@@ -796,13 +796,14 @@ function exportSummary() {
 
   var css = [
     '* { box-sizing: border-box; margin: 0; padding: 0; }',
-    'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1a1a1a; padding: 32px; max-width: 760px; margin: 0 auto; font-size: 12px; }',
+    '@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@500;600&display=swap");',
+    'body { font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; padding: 32px; max-width: 760px; margin: 0 auto; font-size: 12px; }',
     '@media print { body { padding: 24px; } @page { margin: .5in; size: letter; } .no-print { display: none !important; } }',
-    '.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #1a1a1a; }',
-    '.logo { font-size: 11px; font-weight: 600; letter-spacing: .05em; color: #00D0AD; margin-bottom: 2px; }',
-    '.host-name { font-size: 22px; font-weight: 600; }',
+    '.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #092B2E; }',
+    '.logo { display: block; margin-bottom: 6px; }',
+    '.host-name { font-family: "Inter Tight", sans-serif; font-size: 22px; font-weight: 600; color: #092B2E; }',
     '.doc-meta { text-align: right; font-size: 11px; color: #888; line-height: 1.5; }',
-    '.big-num { text-align: center; padding: 14px; background: #f7f9fd; border-radius: 8px; margin-bottom: 16px; }',
+    '.big-num { text-align: center; padding: 14px; background: #f0fdf9; border-radius: 8px; margin-bottom: 16px; }',
     '.bn-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }',
     '.bn-value { font-size: 36px; font-weight: 600; margin-bottom: 2px; }',
     '.bn-sub { font-size: 11px; color: #888; }',
@@ -820,7 +821,7 @@ function exportSummary() {
     '.metric.pos .mv { color: #15803d; }',
     '.scenarios { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }',
     '.scen { background: #f7f7f7; border-radius: 6px; padding: 10px; text-align: center; }',
-    '.scen.base { background: #f7f9fd; border: 1px solid rgba(50,102,173,.2); }',
+    '.scen.base { background: #f0fdf9; border: 1px solid rgba(0,208,173,.3); }',
     '.scen .sl { font-size: 9px; color: #aaa; margin-bottom: 4px; }',
     '.scen .sv { font-size: 14px; font-weight: 500; }',
     '.scen .sp { font-size: 10px; color: #888; margin-top: 3px; }',
@@ -833,7 +834,17 @@ function exportSummary() {
     + '<style>' + css + '</style></head><body>'
     + '<button class="print-btn no-print" onclick="window.print()">Save as PDF</button>'
     + '<div class="header">'
-    +   '<div><div class="logo">MIGHTY PRO</div><div class="host-name">' + host + '</div></div>'
+    +   '<div>'
+    +     '<svg class="logo" width="80" height="24" viewBox="0 0 269 82" fill="none" xmlns="http://www.w3.org/2000/svg">'
+    +       '<path d="M0 62.0305H13.7941V40.1138C13.7941 32.0717 16.7693 29.6856 21.187 29.6856C25.4244 29.6856 27.5882 32.0717 27.5882 37.9928V62.0305H41.4725V40.1138C41.4725 32.0717 44.4477 29.6856 48.7753 29.6856C53.0127 29.6856 55.2665 32.1601 55.2665 38.0812V62.0305H69.1508V35.6067C69.1508 26.6809 66.1757 18.2854 53.7339 18.2854C47.3328 18.2854 42.1937 21.5552 39.8497 26.1507C37.9563 21.6436 33.9894 18.2854 26.2359 18.2854C20.1953 18.2854 15.6874 21.3785 13.7941 25.6204V19.4343H0V62.0305Z" fill="#092B2E"/>'
+    +       '<path d="M81.5569 16.5259C86.5156 16.5259 90.1219 12.8142 90.1219 8.30716C90.1219 3.71171 86.5156 0 81.5569 0C76.5982 0 73.0821 3.71171 73.0821 8.30716C73.0821 12.8142 76.5982 16.5259 81.5569 16.5259ZM74.705 62.0305H88.4089V21.041H74.705V62.0305Z" fill="#092B2E"/>'
+    +       '<path d="M126.892 19.4343V25.5321C124.728 21.1134 119.409 18.2854 113.459 18.2854C100.927 18.2854 92.6321 27.7414 92.6321 40.2905C92.6321 52.8396 100.386 62.0305 113.278 62.0305C118.958 62.0305 124.728 59.3793 126.892 55.1374V60.7933C126.892 68.3935 123.015 71.1331 116.614 71.1331C111.024 71.1331 108.049 69.1005 107.418 65.7422H93.3533C93.5337 70.3377 96.6892 74.9332 101.107 77.5844C105.344 80.0588 110.573 81.0309 116.794 81.0309C123.015 81.0309 128.334 79.9705 132.301 77.2309C137.621 73.6075 140.596 67.5097 140.686 59.2909V19.4343H126.892ZM117.065 51.6024C110.844 51.6024 106.787 46.9186 106.787 40.4673C106.787 34.016 110.844 29.3321 117.065 29.3321C123.646 29.3321 127.523 34.2811 127.523 40.4673C127.523 46.6535 123.646 51.6024 117.065 51.6024Z" fill="#092B2E"/>'
+    +       '<path d="M174.169 18.2854C167.588 18.2854 162.629 20.8482 160.105 25.6204V0.168712H146.311V62.0305H160.105V39.7603C160.105 33.2206 162.99 29.6856 168.489 29.6856C174.079 29.6856 176.153 32.9555 176.153 40.1138V62.0305H190.037V35.6951C190.037 24.1181 184.718 18.2854 174.169 18.2854Z" fill="#092B2E"/>'
+    +       '<path d="M215.465 51.514C212.039 51.514 209.424 50.5419 209.424 44.2674V30.1275H220.243V19.4343H209.424V6.79677H195.63V47.0953C195.63 61.3235 204.556 62.7375 211.047 62.7375C215.998 62.7375 221.473 61.428 224.546 60.4559C224.546 60.4559 222.935 57.4431 222.32 55.8363C221.706 54.2295 220.858 51.2168 220.858 51.2168C219.596 51.3935 216.997 51.514 215.465 51.514Z" fill="#092B2E"/>'
+    +       '<path d="M255.097 19.4343V40.5556C255.097 47.0953 252.302 51.3373 246.712 51.3373C240.942 51.3373 239.049 47.6256 239.049 42.1464V19.4343H225.255V44.179C225.255 54.7839 230.213 62.0305 241.303 62.0305C247.884 62.0305 252.663 59.4677 255.097 54.9606V61.5887C255.097 68.2167 251.761 71.1331 246.712 71.1331C241.483 71.1331 239.41 69.0121 239.139 65.3887H225.255C225.345 69.9842 227.509 73.961 230.664 76.6123C234.271 79.5286 239.319 81.0309 246.712 81.0309C254.015 81.0309 258.793 79.3518 262.67 76.082C266.367 72.8122 268.891 67.5981 268.891 60.7049V19.4343H255.097Z" fill="#092B2E"/>'
+    +     '</svg>'
+    +     '<div class="host-name">' + host + '</div>'
+    +   '</div>'
     +   '<div class="doc-meta"><div>Year 1 Projections</div><div>' + today + '</div></div>'
     + '</div>'
     + '<div class="big-num">'
