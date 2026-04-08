@@ -244,11 +244,11 @@ hr { border: none; border-top: 1px solid #f0f0f0; margin: 1.25rem 0; }
       <div class="grid2">
         <div class="frow">
           <label class="fl">One-time price ($)</label>
-          <input type="number" id="introPrice" value="97" oninput="calc()">
+          <input type="text" inputmode="numeric" class="n-fmt" id="introPrice" value="97" oninput="calc()">
         </div>
         <div class="frow">
           <label class="fl">Member cap (leave blank for no cap)</label>
-          <input type="number" id="introCap" placeholder="no cap" oninput="calc()">
+          <input type="text" inputmode="numeric" class="n-fmt" id="introCap" placeholder="no cap" data-allow-empty oninput="calc()">
         </div>
       </div>
       <hr>
@@ -278,11 +278,11 @@ hr { border: none; border-top: 1px solid #f0f0f0; margin: 1.25rem 0; }
       <div class="grid2">
         <div class="frow">
           <label class="fl">Monthly price ($)</label>
-          <input type="number" id="coreMonthly" value="48" oninput="calc()">
+          <input type="text" inputmode="numeric" class="n-fmt" id="coreMonthly" value="48" oninput="calc()">
         </div>
         <div class="frow">
           <label class="fl">Annual price ($)</label>
-          <input type="number" id="coreAnnual" value="497" oninput="calc()">
+          <input type="text" inputmode="numeric" class="n-fmt" id="coreAnnual" value="497" oninput="calc()">
         </div>
       </div>
       <div class="grid2">
@@ -329,11 +329,11 @@ hr { border: none; border-top: 1px solid #f0f0f0; margin: 1.25rem 0; }
       <div class="grid2">
         <div class="frow">
           <label class="fl">Annual price ($)</label>
-          <input type="number" id="upPrice" value="1997" oninput="calc()">
+          <input type="text" inputmode="numeric" class="n-fmt" id="upPrice" value="1,997" oninput="calc()">
         </div>
         <div class="frow">
           <label class="fl">Number of members</label>
-          <input type="number" id="upMembers" value="0" oninput="calc()">
+          <input type="text" inputmode="numeric" class="n-fmt" id="upMembers" value="0" oninput="calc()">
           <div class="hint">Usually sold to existing core members — enter an expected headcount directly.</div>
         </div>
       </div>
@@ -358,7 +358,7 @@ hr { border: none; border-top: 1px solid #f0f0f0; margin: 1.25rem 0; }
   <div class="grid2" style="margin-bottom:1.25rem;">
     <div class="frow">
       <label class="fl">Mighty Pro annual cost ($)</label>
-      <input type="number" id="mightyCost" value="0" oninput="calc()">
+      <input type="text" inputmode="numeric" class="n-fmt" id="mightyCost" value="0" oninput="calc()">
     </div>
     <div class="frow">
       <label class="fl">Transaction fee %</label>
@@ -471,7 +471,7 @@ document.addEventListener('blur', function(e) {
   var el = e.target;
   var isNum = el.type === 'number';
   var isFmt = el.classList && el.classList.contains('n-fmt');
-  if ((isNum || isFmt) && el.value === '') { el.value = '0'; el.dispatchEvent(new Event('input')); }
+  if ((isNum || isFmt) && el.value === '' && !el.dataset.allowEmpty) { el.value = '0'; el.dispatchEvent(new Event('input')); }
 }, true);
 
 var S = {
